@@ -1,0 +1,98 @@
+/* src/components/SinglePost.css */
+/* نسخه کامل دارک مود */
+
+.single-post-wrapper {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-soft);
+}
+
+.single-post-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.single-post-back-link:hover {
+   background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+.single-post-back-link:active {
+  transform: translateY(0);
+}
+
+.single-post-title {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--text-main);
+}
+
+.single-post-meta {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.single-post-content {
+  line-height: 1.8;
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+/* استایل برای عکس‌های خود پست داخل محتوا */
+.single-post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 16px 0 24px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* اگر وردپرس عکس را داخل figure گذاشته، وسط‌چین شود */
+.single-post-content figure {
+  margin: 0;
+  text-align: center;
+}
+
+.single-post-content figure img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.single-post-featured-image {
+  width: 100%;
+  margin: 24px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.single-post-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 500px;
+}

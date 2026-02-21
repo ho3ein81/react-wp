@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.app-main {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+}
+
+.app-layout {
+  display: flex;
+  gap: 16px;
+}
+
+.app-content {
+  flex: 1;
+}

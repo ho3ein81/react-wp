@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f9fafb;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #667eea;
+  --primary-hover: #5568d3;
+}
+
+/* دارک مود */
+[data-theme="dark"] {
+  --bg: #020617;
+  --bg-soft: #0b1120;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border: #1f2937;
+  --primary: #818cf8;
+  --primary-hover: #6366f1;
+}
+
+/* پس‌زمینه کلی بدنه */
+body {
+  background: var(--bg-soft);
+  color: var(--text-main);
+}

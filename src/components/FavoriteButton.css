@@ -1,0 +1,88 @@
+/* src/components/FavoriteButton.css */
+/* نسخه کامل دارک مود */
+
+.favorite-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.favorite-btn svg {
+  width: 22px;
+  height: 22px;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  background: var(--bg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.favorite-btn:hover svg {
+  color: #e91e63;
+}
+
+.favorite-btn.favorited {
+  background: rgba(233, 30, 99, 0.15);
+  border-color: rgba(233, 30, 99, 0.3);
+}
+
+.favorite-btn.favorited svg {
+  color: #e91e63;
+  fill: #e91e63;
+}
+
+.favorite-btn:active {
+  transform: scale(0.95);
+}
+
+/* دارک مود - خودکار */
+@media (prefers-color-scheme: dark) {
+  .favorite-btn {
+    background: rgba(31, 41, 55, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .favorite-btn:hover {
+    background: var(--bg-soft);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  .favorite-btn.favorited {
+    background: rgba(233, 30, 99, 0.2);
+    border-color: rgba(233, 30, 99, 0.4);
+  }
+}
+
+/* با CSS Variables */
+.favorite-btn {
+  --btn-bg: rgba(255, 255, 255, 0.95);
+  --btn-border: rgba(255, 255, 255, 0.2);
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+}
+
+[data-theme="dark"] .favorite-btn {
+  --btn-bg: rgba(31, 41, 55, 0.95);
+  --btn-border: rgba(75, 85, 99, 0.3);
+}
+
+[data-theme="dark"] .favorite-btn:hover {
+  background: var(--bg-soft);
+}

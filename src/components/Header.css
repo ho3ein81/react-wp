@@ -1,0 +1,200 @@
+/* src/components/Header.css */
+/* نسخه کامل دارک مود + فیکس دکمه */
+
+.site-header {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-logo {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.header-logo-span {
+  color: white;
+  -webkit-text-stroke: 1px var(--primary);
+}
+
+.header-logo:hover {
+  color: var(--primary-hover);
+}
+
+.header-logo-span:hover {
+  color: white;
+  -webkit-text-stroke: 1px var(--primary-hover);
+}
+
+/* سرچ */
+.header-search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 480px;
+}
+
+.header-search-input {
+  direction: rtl;
+  width: 100%;
+  padding: 10px 12px;
+  padding-left: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  background: var(--bg-soft);
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.header-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.header-search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+  background: var(--bg);
+}
+
+.header-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.header-search-loading {
+  position: absolute;
+  left: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* نتایج */
+.header-search-results {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 100%;
+  background: var(--bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  padding: 6px 0;
+  z-index: 40;
+}
+
+.header-search-item {
+  width: 100%;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: right;
+  color: var(--text-main);
+  transition: background 0.2s;
+}
+
+.header-search-item:hover {
+  background: var(--bg-soft);
+}
+
+.header-search-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.header-search-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.header-search-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.header-search-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.header-search-empty {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* دکمه دارک مود - فیکس شده */
+.theme-toggle-btn {
+  padding: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: auto; /* ← فیکس: دکمه رو راست می‌بره */
+}
+
+.theme-toggle-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* ریسپانسیو */
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-logo {
+    text-align: center;
+  }
+
+  .header-search-wrapper {
+    max-width: 100%;
+  }
+
+  .theme-toggle-btn {
+    margin-left: 0;
+    margin-top: 12px;
+    align-self: center;
+  }
+}

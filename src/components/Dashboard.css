@@ -1,0 +1,327 @@
+/* src/components/Dashboard.css */
+/* نسخه کامل دارک مود */
+
+.dashboard-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+  background: var(--bg-soft);
+}
+
+/* Header */
+.dashboard-header {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--text-main);
+}
+
+.dashboard-date {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Stats Cards */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--primary);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  transition: all 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  background: var(--primary-hover);
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 0;
+  color: white;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+  line-height: 1;
+}
+
+.stat-value-small {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+  line-height: 1.2;
+}
+
+/* Quick Actions */
+.dashboard-actions {
+  margin-bottom: 32px;
+}
+
+.dashboard-section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.action-btn {
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+}
+
+.action-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* Recent Posts */
+.dashboard-recent {
+  margin-bottom: 32px;
+}
+
+.dashboard-empty {
+  background: var(--bg-soft);
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+}
+
+.dashboard-empty p {
+  color: var(--text-muted);
+  margin: 0 0 16px;
+}
+
+.dashboard-empty-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.dashboard-empty-link:hover {
+  background: var(--primary-hover);
+}
+
+.recent-posts-list {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recent-post-item {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+  transition: background 0.2s;
+}
+
+.recent-post-item:hover {
+  background: var(--bg);
+}
+
+.recent-post-item:last-child {
+  border-bottom: none;
+}
+
+.recent-post-info {
+  flex: 1;
+}
+
+.recent-post-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--text-main);
+}
+
+.recent-post-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.recent-post-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.recent-post-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.view-btn {
+  background: var(--primary);
+  color: white;
+}
+
+.view-btn:hover {
+  background: var(--primary-hover);
+}
+
+.delete-btn {
+  background: var(--bg);
+  color: #dc2626;
+  border: 1px solid #dc2626;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+/* Account Summary */
+.dashboard-summary {
+  margin-bottom: 32px;
+}
+
+.summary-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.summary-value {
+  font-size: 14px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 16px;
+  }
+
+  .dashboard-title {
+    font-size: 22px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-post-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .recent-post-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

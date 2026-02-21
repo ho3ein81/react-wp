@@ -1,0 +1,231 @@
+/* src/pages/MyPosts.css */
+/* نسخه کامل دارک مود */
+
+.my-posts-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background: var(--bg-soft);
+}
+
+.my-posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.my-posts-header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: var(--text-main);
+}
+
+.my-posts-create-btn {
+  padding: 10px 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.my-posts-create-btn:hover {
+  background: var(--primary-hover);
+}
+
+.my-posts-form {
+  background: var(--bg-soft);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--border);
+}
+
+.my-posts-form input,
+.my-posts-form textarea {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+.my-posts-form input::placeholder,
+.my-posts-form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.my-posts-form button {
+  padding: 10px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.my-posts-form button:hover {
+  background: #059669;
+}
+
+.my-posts-form button:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.my-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.my-posts-empty {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.my-post-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.my-post-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.my-post-image {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.my-post-content {
+  flex: 1;
+}
+
+.my-post-content h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: var(--text-main);
+}
+
+.my-post-content p {
+  margin: 0 0 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.my-post-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.my-post-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.my-post-view-btn,
+.my-post-delete-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-post-view-btn {
+  background: var(--primary);
+  color: white;
+}
+
+.my-post-view-btn:hover {
+  background: var(--primary-hover);
+}
+
+.my-post-delete-btn {
+  background: var(--bg);
+  color: #dc2626;
+  border: 1px solid #dc2626;
+}
+
+.my-post-delete-btn:hover {
+  background: #dc2626;
+  color: white;
+}
+
+.my-posts-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+}
+
+.my-posts-image-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.my-posts-image-btn {
+  padding: 10px;
+  background: var(--bg-soft);
+  border: 2px dashed var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.my-posts-image-btn:hover {
+  background: var(--border);
+  border-color: var(--text-muted);
+}
+
+.my-posts-image-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.my-posts-image-preview {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.my-posts-image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
