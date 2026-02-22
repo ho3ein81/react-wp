@@ -11,15 +11,14 @@ function PostList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // اینجا همه پست‌ها را از وردپرس می‌گیریم
     fetch(`${wpUrl}/wp-json/wp/v2/posts?per_page=20&_embed`)
       .then((res) => {
         if (!res.ok) throw new Error('Status: ' + res.status);
         return res.json();
       })
       .then((data) => {
-         console.log('First post:', data[0]); // 
-        setPosts(data);      // تمام پست‌ها اینجاست
+         console.log('First post:', data[0]);
+        setPosts(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -32,25 +31,24 @@ function PostList() {
   if (error) return <p>خطا در لود: {error}</p>;
 
   return (
-    
-<div style={{ padding: '20px' }}>
-    <h1 style={{ maxWidth: 1100, margin: '0 auto 24px' }}>Blog Page</h1>
+    <div style={{ padding: '20px' }}>
+      <h1 style={{ maxWidth: 1100, margin: '0 auto 24px' }}>صفحه بلاگ</h1>
 
-    <div
-      style={{
-        maxWidth: 1100,
-        margin: '0 auto',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-        gap: '20px',
-      }}
-    >
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
+      <div
+        style={{
+          maxWidth: 1100,
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+          gap: '20px',
+        }}
+      >
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default PostList;

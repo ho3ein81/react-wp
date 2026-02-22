@@ -48,7 +48,6 @@ function Dashboard() {
 
   const fetchDashboardData = async (token) => {
     try {
-      // دریافت اطلاعات کاربر
       const userResponse = await fetch(
         `${WP_API_URL}/wp-json/wp/v2/users/me`,
         {
@@ -66,7 +65,6 @@ function Dashboard() {
         ),
       }));
 
-      // دریافت تعداد کل پست‌های سایت
       const allPostsResponse = await fetch(
         `${WP_API_URL}/wp-json/wp/v2/posts?per_page=1`
       );
@@ -76,7 +74,6 @@ function Dashboard() {
         totalSitePosts: parseInt(totalSitePosts, 10) || 0,
       }));
 
-      // دریافت پست‌های کاربر
       const myPostsResponse = await fetch(
         `${WP_API_URL}/wp-json/hth/v1/my-posts`,
         {
@@ -94,7 +91,6 @@ function Dashboard() {
         setRecentPosts(myPostsData.posts.slice(0, 5));
       }
 
-      // دریافت علاقه‌مندی‌ها
       const favoritesData = JSON.parse(
         localStorage.getItem("favorites") || "[]"
       );
@@ -152,7 +148,6 @@ function Dashboard() {
 
   return (
     <div className="dashboard-page">
-      {/* Header */}
       <div className="dashboard-header">
         <div>
           <h1 className="dashboard-title">خوش آمدید، {username}! 👋</h1>
@@ -163,7 +158,6 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Stats Cards */}
       <div className="dashboard-stats">
         <div className="stat-card">
           <div className="stat-icon">
@@ -206,7 +200,6 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Quick Actions */}
       <div className="dashboard-actions">
         <h2 className="dashboard-section-title">⚡ اقدامات سریع</h2>
         <div className="action-buttons">
@@ -225,7 +218,6 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Recent Posts */}
       <div className="dashboard-recent">
         <h2 className="dashboard-section-title">
           <FileText size={20} style={{ display: "inline", marginLeft: "8px" }} />
@@ -269,7 +261,6 @@ function Dashboard() {
         )}
       </div>
 
-      {/* Account Summary */}
       <div className="dashboard-summary">
         <h2 className="dashboard-section-title">
           <User size={20} style={{ display: "inline", marginLeft: "8px" }} />

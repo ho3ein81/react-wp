@@ -1,5 +1,5 @@
-// src/components/AIChat.jsx - نهایی
-import React, { useState, useEffect } from 'react';
+// src/components/AIChat.jsx - فیکس شده
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './AIChat.css';
 
@@ -75,12 +75,11 @@ function AIChat() {
   return (
     <div className="ai-chat-page">
       <div className="ai-chat-container">
-        {/* Header با دکمه Reset */}
         <div className="ai-chat-header">
           <Link to="/" className="ai-chat-back-btn">
             ← بازگشت
           </Link>
-          <h1> (AI) دستیار شخصی </h1>
+          <h1>(AI) دستیار شخصی</h1>
           {messages.length > 0 && (
             <button className="ai-chat-reset-btn" onClick={resetChat}>
               🗑️ پاک کردن
@@ -88,12 +87,10 @@ function AIChat() {
           )}
         </div>
 
-        {/* Messages */}
         <div className="ai-chat-messages">
           {messages.length === 0 && !loading && (
             <div className="ai-chat-empty">
-           
-              <p>سلام!  آماده ام هر سوالی بپرسی جواب بدم</p>
+              <p>سلام! آماده ام هر سوالی بپرسی جواب بدم</p>
             </div>
           )}
           
@@ -122,7 +119,6 @@ function AIChat() {
           )}
         </div>
 
-        {/* Input */}
         <div className="ai-chat-input-wrapper">
           <textarea
             value={input}

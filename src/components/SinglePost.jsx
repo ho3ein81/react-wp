@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './SinglePost.css';
-import Loader from './Loader.jsx';
+import Loader from './Loader';
 
 const wpUrl = 'https://hvali.host.webr.ir/wordpress';
 
@@ -32,8 +32,7 @@ function SinglePost() {
   if (error) return <p>خطا در لود: {error}</p>;
   if (!post) return <p>پستی یافت نشد.</p>;
 
-  // گرفتن عکس شاخص
-  const featuredImage =
+  const _featuredImage =
     post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
     post.jetpack_featured_media_url ||
     null;
@@ -53,14 +52,12 @@ function SinglePost() {
         تاریخ: {new Date(post.date).toLocaleDateString('fa-IR')}
       </p>
 
-      {/* نمایش عکس شاخص */}
-      {featuredImage && (
+      { _featuredImage && (
         <div className="single-post-featured-image">
-          <img src={featuredImage} alt={post.title.rendered} />
+          <img src={_featuredImage} alt={post.title.rendered} />
         </div>
       )}
 
-      {/* محتوای پست */}
       <div
         className="single-post-content"
         dangerouslySetInnerHTML={{ __html: post.content.rendered }}

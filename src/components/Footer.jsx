@@ -15,7 +15,6 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        {/* ستون برند */}
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
             Hvali <span>News</span>
@@ -25,7 +24,6 @@ function Footer() {
           </p>
         </div>
 
-        {/* ستون لینک‌های سریع */}
         <div className="footer-column">
           <h4 className="footer-title">دسترسی سریع</h4>
 
@@ -50,7 +48,6 @@ function Footer() {
           </Link>
         </div>
 
-        {/* ستون درباره / تماس */}
         <div className="footer-column">
           <h4 className="footer-title">
             <Info size={16} className="footer-icon" />

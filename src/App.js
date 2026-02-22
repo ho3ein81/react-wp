@@ -10,6 +10,7 @@ import AIChat from './components/AIChat';
 import FavoritesPage from './components/FavoritesPage';
 import MyPosts from './components/MyPosts';
 import Dashboard from './components/Dashboard';
+import AboutPage from './AboutPage';  
 import Footer from "./components/Footer";
 import './App.css';
 
@@ -58,6 +59,17 @@ function App() {
             }
           />
           
+          <Route
+            path="/about"
+            element={
+              <div className="app-layout">
+                <div className="app-content">
+                  <AboutPage />
+                </div>
+                <UserSidebar />
+              </div>
+            }
+          />
           <Route
             path="/my-posts"
             element={

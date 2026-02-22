@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./FavoriteButton.css";
 
 function FavoriteButton({ post }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  useEffect(() => {
-    checkIfFavorite();
-  }, [post.id]);
-
-  const checkIfFavorite = () => {
+  const checkIfFavorite = useCallback(() => {
     const saved = localStorage.getItem("favoritePosts");
     if (saved) {
       const favorites = JSON.parse(saved);
       const exists = favorites.some(fav => fav.id === post.id);
       setIsFavorite(exists);
     }
-  };
+  }, [post.id]);
+
+  useEffect(() => {
+    checkIfFavorite();
+  }, [checkIfFavorite]);
 
   const toggleFavorite = (e) => {
     e.preventDefault();
@@ -28,7 +28,6 @@ function FavoriteButton({ post }) {
       favorites = favorites.filter(fav => fav.id !== post.id);
       setIsFavorite(false);
     } else {
-      // گرفتن عکس از چندین منبع مختلف
       const featuredImage = 
         post._embedded?.['wp:featuredmedia']?.[0]?.source_url || 
         post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium?.source_url ||
@@ -48,7 +47,6 @@ function FavoriteButton({ post }) {
       });
       setIsFavorite(true);
       
-      // برای دیباگ
       console.log('Saved post:', {
         id: post.id,
         title: post.title?.rendered,

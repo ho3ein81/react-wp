@@ -16,7 +16,6 @@ function AuthPage() {
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
-  // چک کردن لاگین قبلی
   useEffect(() => {
     const token = localStorage.getItem("wpToken");
     const savedUsername = localStorage.getItem("wpUsername");
@@ -26,7 +25,6 @@ function AuthPage() {
     }
   }, []);
 
-  // لاگین واقعی با JWT
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -67,15 +65,12 @@ function AuthPage() {
         return;
       }
 
-      // ذخیره توکن و اطلاعات
       localStorage.setItem("wpToken", data.token);
       localStorage.setItem("wpUsername", data.user_nicename || username);
 
-      // نمایش پیام موفقیت
       setSuccessMessage("ورود موفقیت‌آمیز بود! در حال انتقال...");
       setLoading(false);
 
-      // بعد از 1 ثانیه انتقال بده
       setTimeout(() => {
         setIsLoggedIn(true);
         navigate("/");
@@ -87,7 +82,6 @@ function AuthPage() {
     }
   };
 
-  // ثبت‌نام واقعی با endpoint hth/v1/register
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
@@ -198,7 +192,6 @@ return (
           disabled={loading}
         />
 
-        {/* پیام‌ها بعد از inputها */}
         {error && <p className="auth-error">{error}</p>}
         {successMessage && <p className="auth-success">{successMessage}</p>}
 
@@ -225,7 +218,6 @@ return (
           disabled={loading}
         />
 
-        {/* پیام‌ها بعد از inputها */}
         {error && <p className="auth-error">{error}</p>}
         {successMessage && <p className="auth-success">{successMessage}</p>}
 

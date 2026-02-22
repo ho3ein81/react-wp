@@ -1,5 +1,5 @@
 // src/components/UserSidebar.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./UserSidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -17,7 +17,6 @@ function UserSidebar() {
   const [totalPostsCount, setTotalPostsCount] = useState(0);
   const [userPostsCount, setUserPostsCount] = useState(0);
 
-  // لیست تبلیغات
   const ads = [
     {
       image: "https://cdn.dribbble.com/userupload/42508861/file/original-ef6e4789770f14d0f0a207bf86152d32.gif",
@@ -33,23 +32,7 @@ function UserSidebar() {
     }
   ];
 
-  // دریافت عکس پروفایل و آمار هنگام لود
-  useEffect(() => {
-    // تعداد کل پست‌ها (برای همه قابل دسترسی)
-    fetch(`${WP_API_URL}/wp-json/wp/v2/posts?per_page=1`)
-      .then((res) => {
-        const total = res.headers.get("X-WP-Total");
-        if (total) setTotalPostsCount(parseInt(total, 10));
-      })
-      .catch(() => {});
-
-    if (isLoggedIn && token) {
-      fetchProfilePicture(token);
-      fetchUserPostsCount(token);
-    }
-  }, [isLoggedIn, token]);
-
-  const fetchProfilePicture = async (authToken) => {
+  const fetchProfilePicture = useCallback(async (authToken) => {
     try {
       const response = await fetch(
         `${WP_API_URL}/wp-json/hth/v1/profile-picture`,
@@ -68,9 +51,9 @@ function UserSidebar() {
     } catch (err) {
       console.error("خطا در دریافت عکس پروفایل:", err);
     }
-  };
+  }, []);
 
-  const fetchUserPostsCount = async (authToken) => {
+  const fetchUserPostsCount = useCallback(async (authToken) => {
     try {
       const response = await fetch(
         `${WP_API_URL}/wp-json/hth/v1/my-posts`,
@@ -88,7 +71,21 @@ function UserSidebar() {
     } catch (err) {
       console.error("خطا در دریافت تعداد نوشته‌های کاربر:", err);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetch(`${WP_API_URL}/wp-json/wp/v2/posts?per_page=1`)
+      .then((res) => {
+        const total = res.headers.get("X-WP-Total");
+        if (total) setTotalPostsCount(parseInt(total, 10));
+      })
+      .catch(() => {});
+
+    if (isLoggedIn && token) {
+      fetchProfilePicture(token);
+      fetchUserPostsCount(token);
+    }
+  }, [isLoggedIn, token, fetchProfilePicture, fetchUserPostsCount]);
 
   const handleAvatarClick = () => {
     if (!uploading) {
@@ -161,7 +158,6 @@ function UserSidebar() {
           </Link>
         </aside>
 
-        {/* تبلیغات - سه تا زیر هم */}
         <div className="sidebar-ads-section">
           {ads.map((ad, index) => (
             <div key={index} className="sidebar-ad-item">
@@ -221,7 +217,6 @@ function UserSidebar() {
           </div>
         </div>
 
-        {/* بخش آمار */}
         <div className="user-stats">
           <div className="user-stat-item">
             <span className="user-stat-label">تعداد کل خبرها</span>
@@ -243,16 +238,16 @@ function UserSidebar() {
           <Link to="/my-posts" className="user-menu-item">
             نوشته‌های من
           </Link>
-<Link to="/ai-chat" className="user-menu-item">
- (AI) دستیار شخصی
+          <Link to="/ai-chat" className="user-menu-item">
+            (AI) دستیار شخصی
+          </Link>
+          <Link to="/about" className="user-menu-item">
+   درباره برنامه
 </Link>
 
-
-          
         </nav>
       </aside>
 
-      {/* تبلیغات - سه تا زیر هم */}
       <div className="sidebar-ads-section">
         {ads.map((ad, index) => (
           <div key={index} className="sidebar-ad-item">

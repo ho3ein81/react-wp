@@ -1,5 +1,5 @@
 // src/pages/MyPosts.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./MyPosts.css";
 import Loader from "./Loader";
@@ -21,16 +21,7 @@ function MyPosts() {
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("wpToken");
-    if (!token) {
-      navigate("/auth");
-      return;
-    }
-    fetchMyPosts(token);
-  }, [navigate]);
-
-  const fetchMyPosts = async (token) => {
+  const fetchMyPosts = useCallback(async (token) => {
     try {
       const response = await fetch(
         `${WP_API_URL}/wp-json/hth/v1/my-posts`,
@@ -50,7 +41,16 @@ function MyPosts() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("wpToken");
+    if (!token) {
+      navigate("/auth");
+      return;
+    }
+    fetchMyPosts(token);
+  }, [navigate, fetchMyPosts]);
 
   const handleImageSelect = async (e) => {
     const file = e.target.files?.[0];
@@ -69,7 +69,6 @@ function MyPosts() {
     setFeaturedImage(file);
     setImagePreview(URL.createObjectURL(file));
 
-    // آپلود فوری عکس
     setUploadingImage(true);
     const token = localStorage.getItem("wpToken");
     const formData = new FormData();
@@ -148,12 +147,8 @@ function MyPosts() {
     }
   };
 
-  const handleDelete = async (postId) => {
-    if (
-      !window.confirm(
-        "آیا مطمئن هستید که می‌خواهید این نوشته را حذف کنید?"
-      )
-    ) {
+  const handleDelete = useCallback(async (postId) => {
+    if (!window.confirm("آیا مطمئن هستید که می‌خواهید این نوشته را حذف کنید?")) {
       return;
     }
 
@@ -181,7 +176,7 @@ function MyPosts() {
     } catch (err) {
       alert("خطا در ارتباط با سرور");
     }
-  };
+  }, [posts]);
 
   if (loading) {
     return <Loader/>;
